@@ -82,6 +82,15 @@ Afim de evitar erros, também está disponível pelo google drive, através do l
 <br>
 
 <h4>Ordem de execução das APIs:</h4>
+- Cadastro de cliente<br/>
+- Listar categoria (para ter o ID da categoria ao criar o produto)<br/>
+- Cadastro de produto<br/>
+- Criação de pedido<br/>
+- Gerar pagamento qr code<br/>
+- Consultar status do pedido<br/>
+- Atualizar status do pagamento (caso não efetuado via qr code)<br/>
+- Atualizar status do pedido<br/>
+<br/>
 
 
 <h2>Vídeo de apresentação:</h2>
@@ -100,6 +109,6 @@ npx prisma db seed
 
 <br>
 <h3>Alunos:</h3><br>
-Gabriela Gonçalves Taccari (RM:rm360973 Discord:)<br/>
-Rainer Lima Gramm<br/>
-Felipe Mello <br/>
+Gabriela Gonçalves Taccari (RM:rm360973 Discord: #gabriela3468)<br/>
+Rainer Lima Gramm (RM: 360974 Discord: #gramm9227)<br/>
+Felipe Mello (RM: 361257)<br/>
