@@ -85,9 +85,9 @@ Afim de evitar erros, também está disponível pelo google drive, através do l
 
 
 <h2>Vídeo de apresentação:</h2>
+https://www.youtube.com/watch?v=0vOqRazB4oI
 
-
-Estrutura do banco de dados:
+<h2>Estrutura do banco de dados:</h2>
 
 <img align="center" width="821" height="831" alt="Arquitetura BD" src="https://github.com/GabiTaccari/soat-tech-fase3/blob/main/Untitled%20diagram%20_%20Mermaid%20Chart-2025-09-30-230741.png" />
 
