@@ -90,42 +90,43 @@ Mermaid ERD:
 
 erDiagram
   CLIENTE ||--o{ PEDIDO : "clienteId"
-  PEDIDO ||--|{ ITEM_PEDIDO : contém
-  PRODUTO ||--o{ ITEM_PEDIDO : aparece_em
-  PEDIDO ||--|| PAGAMENTO : possui
+  PEDIDO  ||--|{ ITEM_PEDIDO : "contém"
+  PRODUTO ||--o{ ITEM_PEDIDO : "aparece_em"
+  PEDIDO  ||--|| PAGAMENTO : "possui"
+  CATEGORIA_PRODUTO ||--o{ PRODUTO : "categoriaId"
 
   CLIENTE {
-    string id PK
-    string nome
-    string email
-    string cpf UNIQUE
-    bool   ativo
-    bool   recebeEmail
+    string  id PK
+    string  nome
+    string  email UNIQUE
+    string  cpf UNIQUE
+    bool    ativo
+    bool    recebeEmail
     datetime criadoEm
     datetime atualizadoEm
   }
 
   CATEGORIA_PRODUTO {
-    string id PK
-    string nome UNIQUE
+    string  id PK
+    string  nome UNIQUE
     datetime criadoEm
     datetime atualizadoEm
   }
 
   PRODUTO {
-    string id PK
-    string nome
+    string  id PK
+    string  nome
     decimal preco
-    string categoriaId FK
+    string  categoriaId FK
     datetime criadoEm
     datetime atualizadoEm
   }
 
   PEDIDO {
-    string id PK
-    string clienteId FK nullable
-    string statusPedido
-    string statusPagamento
+    string  id PK
+    string  clienteId FK nullable
+    string  statusPedido      // enum: RECEBIDO | EM_PREPARACAO | PRONTO | FINALIZADO
+    string  statusPagamento   // enum: AGUARDANDO | APROVADO | RECUSADO | ESTORNADO
     datetime criadoEm
     datetime atualizadoEm
   }
@@ -133,17 +134,18 @@ erDiagram
   ITEM_PEDIDO {
     string pedidoId PK,FK
     string produtoId PK,FK
-    int quantidade
+    int    quantidade
   }
 
   PAGAMENTO {
-    string id PK
-    string pedidoId UNIQUE,FK
-    string metodo
-    string status
+    string  id PK
+    string  pedidoId UNIQUE,FK  // 1:1 com Pedido
+    string  metodo
+    string  status              // enum StatusPagamento
     datetime criadoEm
     datetime atualizadoEm
   }
+
 
 Escolhemos PostgreSQL pela maturidade, suporte a transações, constraints fortes (FK, unique, enums via Prisma), facilidade de migração com Prisma, e por ser oferecido como serviço gerenciado (AWS RDS). Para nosso domínio (pedidos, itens, pagamentos) a modelagem relacional garante integridade (ex.: ItemPedido com PK composta) e consultas eficientes com índices (statusPedido, criadoEm, clienteId).
 Rodando as migrations:
