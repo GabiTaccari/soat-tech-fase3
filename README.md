@@ -86,6 +86,66 @@ Afim de evitar erros, também está disponível pelo google drive, através do l
 <h2>Vídeo de apresentação:</h2>
 
 
+Mermaid ERD:
+
+erDiagram
+  CLIENTE ||--o{ PEDIDO : "clienteId"
+  PEDIDO ||--|{ ITEM_PEDIDO : contém
+  PRODUTO ||--o{ ITEM_PEDIDO : aparece_em
+  PEDIDO ||--|| PAGAMENTO : possui
+
+  CLIENTE {
+    string id PK
+    string nome
+    string email
+    string cpf UNIQUE
+    bool   ativo
+    bool   recebeEmail
+    datetime criadoEm
+    datetime atualizadoEm
+  }
+
+  CATEGORIA_PRODUTO {
+    string id PK
+    string nome UNIQUE
+    datetime criadoEm
+    datetime atualizadoEm
+  }
+
+  PRODUTO {
+    string id PK
+    string nome
+    decimal preco
+    string categoriaId FK
+    datetime criadoEm
+    datetime atualizadoEm
+  }
+
+  PEDIDO {
+    string id PK
+    string clienteId FK nullable
+    string statusPedido
+    string statusPagamento
+    datetime criadoEm
+    datetime atualizadoEm
+  }
+
+  ITEM_PEDIDO {
+    string pedidoId PK,FK
+    string produtoId PK,FK
+    int quantidade
+  }
+
+  PAGAMENTO {
+    string id PK
+    string pedidoId UNIQUE,FK
+    string metodo
+    string status
+    datetime criadoEm
+    datetime atualizadoEm
+  }
+
+
 <br>
 <h3>Alunos:</h3><br>
 Gabriela Gonçalves Taccari (RM:rm360973 Discord:)<br/>
