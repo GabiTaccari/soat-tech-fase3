@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: seed-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: seed-container
+        image: gabrielataccari/soat-tech:latest
+        command: ["sh", "-c", "ts-node /app/path/to/seed.ts"]
+      restartPolicy: Never
+  backoffLimit: 4

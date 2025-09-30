@@ -1,0 +1,5 @@
+export interface CriarPagamentoDTO {
+  pedidoId: string;
+  valor: number;
+  metodo: 'PIX' | 'CARTAO';
+}

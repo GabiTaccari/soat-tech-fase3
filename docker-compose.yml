@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: soat
+      POSTGRES_PASSWORD: soat123
+      POSTGRES_DB: pedidos
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  backend:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
+    depends_on:
+      - postgres
+    env_file:
+    - .env
+    environment:
+      - DATABASE_URL=postgresql://soat:soat123@postgres:5432/pedidos
+
+volumes:
+  postgres-data:

@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  @@map("cliente")
+  id           String   @id @default(uuid())
+  nome         String?
+  email        String?
+  cpf          String?  @unique
+  ativo        Boolean  @default(true)
+  recebeEmail  Boolean  @default(false)
+  pedidos      Pedido[]
+  criadoEm     DateTime @default(now())
+}
+
+model Pedido {
+  @@map("pedido")
+  id               String       @id @default(uuid())
+  clienteId        String?      
+  cliente          Cliente?     @relation(fields: [clienteId], references: [id])
+  itens            ItemPedido[]
+  statusPedido     StatusPedido
+  statusPagamento  StatusPagamento
+  pagamento        Pagamento?   @relation("PedidoPagamento")
+  criadoEm         DateTime     @default(now())
+}
+
+model ItemPedido {
+  @@map("item_pedido")
+  id        String   @id @default(uuid())
+  pedidoId  String
+  produtoId String
+  quantidade Int
+
+  pedido   Pedido   @relation(fields: [pedidoId], references: [id])
+  produto  Produto  @relation(fields: [produtoId], references: [id])
+}
+
+model Produto {
+  @@map("produto")
+  id         String    @id @default(uuid())
+  nome       String    @unique
+  descricao  String
+  preco      Float
+  imagemUrl  String?
+  ativo      Boolean   @default(true)
+  categoria  CategoriaProduto @relation(fields: [categoriaId], references: [id])
+  categoriaId String
+  itensPedido ItemPedido[]
+}
+
+model CategoriaProduto {
+  @@map("categoria_produto")
+  id     String   @id @default(uuid())
+  nome   String   @unique
+  produtos Produto[]
+}
+
+model Pagamento {
+  @@map("pagamento")
+  id         String   @id @default(uuid())
+  pedidoId   String   @unique
+  pedido     Pedido   @relation("PedidoPagamento", fields: [pedidoId], references: [id])
+  metodo     String
+  status     String
+  criadoEm   DateTime @default(now())
+}
+
+enum StatusPedido {
+  RECEBIDO
+  EM_PREPARACAO
+  PRONTO
+  FINALIZADO
+  CANCELADO
+}
+
+enum StatusPagamento {
+  AGUARDANDO
+  APROVADO
+  RECUSADO
+  DESCONHECIDO
+}

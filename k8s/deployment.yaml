@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soat-tech-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: soat-tech
+  template:
+    metadata:
+      labels:
+        app: soat-tech
+    spec:
+      containers:
+        - name: soat-tech-container
+          image: gabrielataccari/soat-tech:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://soat:soat123@postgres-service:5432/pedidos?schema=public"
+            - name: MP_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: mercado-pago-secrets 
+                  key: MP_ACCESS_TOKEN 
+            - name: MP_COLLECTOR_ID
+              valueFrom:
+                secretKeyRef:
+                  name: mercado-pago-secrets 
+                  key: MP_COLLECTOR_ID

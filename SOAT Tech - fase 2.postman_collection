@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "7a8dbef8-2018-4d49-9bad-3240d790f3e9",
+		"name": "SOAT Tech",
+		"description": "Este projeto é uma API para um sistema de autoatendimento de uma lanchonete, desenvolvida utilizando arquitetura hexagonal e clean architecture.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7743102",
+		"_collection_link": "https://orange-zodiac-162566.postman.co/workspace/52b6602c-536e-4aed-9ff1-f8de63114f72/collection/7743102-7a8dbef8-2018-4d49-9bad-3240d790f3e9?action=share&source=collection_link&creator=7743102"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Atualizar dados cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Gabi Testando atualizar\",\r\n  \"email\": \"gabi.teste@email.com\",\r\n  \"cpf\": \"12345678900218\",\r\n  \"recebeEmail\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clientes/e091ae87-4016-4af8-af01-0526466a1929",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clientes",
+								"e091ae87-4016-4af8-af01-0526466a1929"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"aGabi Teste Inativar\",\r\n  \"email\": \"gabi.teste@email.com\",\r\n  \"cpf\": \"12345678900215532\",\r\n  \"recebeEmail\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clientes",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar/Inativar cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/clientes/47655720-69d7-4022-b6aa-9dad65baf923/inativar",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clientes",
+								"47655720-69d7-4022-b6aa-9dad65baf923",
+								"inativar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar clientes ativos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Gabi22\",\r\n  \"email\": \"gabi2@email.com\",\r\n  \"cpf\": \"123456789002\",\r\n  \"recebeEmail\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clientes",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cliente por CPF",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Gabi22\",\r\n  \"email\": \"gabi2@email.com\",\r\n  \"cpf\": \"123456789002\",\r\n  \"recebeEmail\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/clientes/cpf/12345678900218",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"clientes",
+								"cpf",
+								"12345678900218"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Criar produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"pizza de calabresa teste com azeitonas23\",\r\n  \"descricao\": \"deliciosa pizza de calabresa e azeitonas\",\r\n  \"preco\": 0.01,\r\n  \"imagemUrl\": \"https://imagem.com/bacon.jpg\",\r\n  \"categoriaId\": \"82544517-bbb7-4825-94f3-62681aae2cee\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/produtos",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"X-Bacon duplo2222\",\r\n  \"descricao\": \"Lanche com bacon2\",\r\n  \"preco\": 0.05,\r\n  \"imagemUrl\": \"https://imagem.com/bacon.jpg\",\r\n  \"categoriaId\": \"82544517-bbb7-4825-94f3-62681aae2cee\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/produtos/5107bf8a-2eb3-418b-9dd9-943279d7dc57",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"produtos",
+								"5107bf8a-2eb3-418b-9dd9-943279d7dc57"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inativar produto",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/produtos/5107bf8a-2eb3-418b-9dd9-943279d7dc57/inativar",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"produtos",
+								"5107bf8a-2eb3-418b-9dd9-943279d7dc57",
+								"inativar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar ativos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/produtos",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/produtos/5107bf8a-2eb3-418b-9dd9-943279d7dc57",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"produtos",
+								"5107bf8a-2eb3-418b-9dd9-943279d7dc57"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/produtos/buscar?nome=calabresa",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"produtos",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "calabresa"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Criar pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"clienteId\": \"\",\r\n  \"produtos\": [\r\n    {\r\n      \"id\": \"067e7518-7b95-4d64-8153-cc2ff26fb804\",\r\n      \"quantidade\": 1\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/pedidos",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/pedidos",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar pedido por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/pedidos/16dab212-b21c-413d-bdbd-4259daab64dc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pedidos",
+								"16dab212-b21c-413d-bdbd-4259daab64dc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar status do pedido",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"EM_PREPARACAO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/pedidos/091a28f3-50b1-4f02-a655-ad215ee42242/status",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pedidos",
+								"091a28f3-50b1-4f02-a655-ad215ee42242",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar status do pagamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/pedidos/f096e740-5c99-4d06-8423-633726617103/pagamento",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pedidos",
+								"f096e740-5c99-4d06-8423-633726617103",
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar status do pagamento",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"statusPagamento\": \"APROVADO\"  // ou RECUSADO, DESCONHECIDO, AGUARDANDO\r\n// }\r\n\r\n\r\n{\r\n  \"metodo\": \"QR_CODE\",\r\n  \"status\": \"APROVADO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/pedidos/091a28f3-50b1-4f02-a655-ad215ee42242/pagamento",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pedidos",
+								"091a28f3-50b1-4f02-a655-ad215ee42242",
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagamento",
+			"item": [
+				{
+					"name": "Gera pagamento qr code",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pedidoId\": \"f096e740-5c99-4d06-8423-633726617103\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/pagamento",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Listar Categorias",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/categorias",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://127.0.0.1:52311",
+			"type": "default"
+		}
+	]
+}

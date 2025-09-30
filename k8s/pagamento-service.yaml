@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pagamento-service
+spec:
+  selector:
+    app: pagamento
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 55046  # A porta onde sua aplicação está rodando
+      nodePort: 30000    # A porta exposta pelo Minikube
+  type: NodePort

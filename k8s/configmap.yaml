@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: soat-tech-config
+data:
+  DATABASE_HOST: "localhost"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "pedidos"
+  DATABASE_SCHEMA: "public"
